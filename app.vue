@@ -1,18 +1,28 @@
 <script setup lang="ts">
-const text = ref('hover animation');
+  const links = [
+    {
+      text: 'about',
+      to: '#',
+    },
+    {
+      text: 'portfolio',
+      to: '#',
+    },
+    {
+      text: 'contact',
+      to: '#',
+    },
+  ];
 </script>
 <template>
-  <div class="flex items-center justify-center h-screen bg-slate-600">
-    <h1
-      class="text-6xl uppercase relative text-gray-900 font-extrabold hover:cursor-pointer before:bg-green-500 before:bg-clip-text before:whitespace-nowrap before:text-transparent before:content-[attr(data-text)] before:absolute before:top-0 before:left-0 before:w-0 before:duration-[3s] before:overflow-hidden hover:before:w-full"
-      :data-text="text"
-    >
-      {{ text }}
-    </h1>
+  <div
+    class="flex h-screen flex-col items-center justify-center bg-gray-800 md:flex-row"
+  >
+    <LinkComponent
+      v-for="link in links"
+      :key="link.text"
+      :text="link.text"
+      :to="link.to"
+    />
   </div>
 </template>
-<style>
-.bg-blue-500 {
-  height: 100%;
-}
-</style>
